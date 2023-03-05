@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Hands-on Machine Learning with Python - Module 1</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Katrien Antonio &amp; Jonas Crevecoeur &amp; Roel Henckaerts" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/metropolis.css" type="text/css" />
+    <link rel="stylesheet" href="css/metropolis-fonts.css" type="text/css" />
+    <link rel="stylesheet" href="css/my-css.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Hands-on Machine Learning with Python - Module 1
+## Hands-on webinar
+<html>
+<div style="float:left">
+
+</div>
+<hr align='center' color='#116E8A' size=1px width=97%>
+</html>
+### Katrien Antonio &amp; Jonas Crevecoeur &amp; Roel Henckaerts
+### <a href="https://github.com/katrienantonio/hands-on-machine-learning-Python-module-1">hands-on-machine-learning-Python-module-1</a> | March, 2023
+
+---
+
+class: inverse, center, middle
+name: prologue
+
+
+
+
+
+
+
+# Prologue
+
+&lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#FAFAFA' size=1px width=796px&gt;&lt;/html&gt;
+
+---
+
+name: introduction
+
+# Introduction
+
+### Course
+
+&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#116E8A;" viewBox="0 0 496 512"&gt;&lt;path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/&gt;&lt;/svg&gt; https://github.com/katrienantonio/hands-on-machine-learning-Python-module-1
+
+The course repo on GitHub, where you can find the data sets, lecture sheets, Google Colab links and Python notebooks.
+
+--
+
+### Us
+
+&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#116E8A;" viewBox="0 0 512 512"&gt;&lt;path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/&gt;&lt;/svg&gt; [https://katrienantonio.github.io/](https://katrienantonio.github.io/) &amp; [LinkedIn profile Jonas](https://www.linkedin.com/in/jonascrevecoeur/) &amp; [LinkedIn profile Roel](https://www.linkedin.com/in/roelhenckaerts)
+
+&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#116E8A;" viewBox="0 0 512 512"&gt;&lt;path d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"/&gt;&lt;/svg&gt; [katrien.antonio@kuleuven.be](mailto:katrien.antonio@kuleuven.be) &amp; [jonas.crevecoeur@kuleuven.be](mailto:jonas.crevecoeur@kuleuven.be) &amp;  [roel.henckaerts@kuleuven.be](mailto:roel.henckaerts@kuleuven.be)
+
+&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#116E8A;" viewBox="0 0 640 512"&gt;&lt;path d="M622.34 153.2L343.4 67.5c-15.2-4.67-31.6-4.67-46.79 0L17.66 153.2c-23.54 7.23-23.54 38.36 0 45.59l48.63 14.94c-10.67 13.19-17.23 29.28-17.88 46.9C38.78 266.15 32 276.11 32 288c0 10.78 5.68 19.85 13.86 25.65L20.33 428.53C18.11 438.52 25.71 448 35.94 448h56.11c10.24 0 17.84-9.48 15.62-19.47L82.14 313.65C90.32 307.85 96 298.78 96 288c0-11.57-6.47-21.25-15.66-26.87.76-15.02 8.44-28.3 20.69-36.72L296.6 284.5c9.06 2.78 26.44 6.25 46.79 0l278.95-85.7c23.55-7.24 23.55-38.36 0-45.6zM352.79 315.09c-28.53 8.76-52.84 3.92-65.59 0l-145.02-44.55L128 384c0 35.35 85.96 64 192 64s192-28.65 192-64l-14.18-113.47-145.03 44.56z"/&gt;&lt;/svg&gt; (Katrien) Professor in insurance data science
+
+&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#116E8A;" viewBox="0 0 640 512"&gt;&lt;path d="M622.34 153.2L343.4 67.5c-15.2-4.67-31.6-4.67-46.79 0L17.66 153.2c-23.54 7.23-23.54 38.36 0 45.59l48.63 14.94c-10.67 13.19-17.23 29.28-17.88 46.9C38.78 266.15 32 276.11 32 288c0 10.78 5.68 19.85 13.86 25.65L20.33 428.53C18.11 438.52 25.71 448 35.94 448h56.11c10.24 0 17.84-9.48 15.62-19.47L82.14 313.65C90.32 307.85 96 298.78 96 288c0-11.57-6.47-21.25-15.66-26.87.76-15.02 8.44-28.3 20.69-36.72L296.6 284.5c9.06 2.78 26.44 6.25 46.79 0l278.95-85.7c23.55-7.24 23.55-38.36 0-45.6zM352.79 315.09c-28.53 8.76-52.84 3.92-65.59 0l-145.02-44.55L128 384c0 35.35 85.96 64 192 64s192-28.65 192-64l-14.18-113.47-145.03 44.56z"/&gt;&lt;/svg&gt; (Jonas) PhD in insurance data science, now data science consultant at UHasselt and KULeuven
+
+&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#116E8A;" viewBox="0 0 640 512"&gt;&lt;path d="M622.34 153.2L343.4 67.5c-15.2-4.67-31.6-4.67-46.79 0L17.66 153.2c-23.54 7.23-23.54 38.36 0 45.59l48.63 14.94c-10.67 13.19-17.23 29.28-17.88 46.9C38.78 266.15 32 276.11 32 288c0 10.78 5.68 19.85 13.86 25.65L20.33 428.53C18.11 438.52 25.71 448 35.94 448h56.11c10.24 0 17.84-9.48 15.62-19.47L82.14 313.65C90.32 307.85 96 298.78 96 288c0-11.57-6.47-21.25-15.66-26.87.76-15.02 8.44-28.3 20.69-36.72L296.6 284.5c9.06 2.78 26.44 6.25 46.79 0l278.95-85.7c23.55-7.24 23.55-38.36 0-45.6zM352.79 315.09c-28.53 8.76-52.84 3.92-65.59 0l-145.02-44.55L128 384c0 35.35 85.96 64 192 64s192-28.65 192-64l-14.18-113.47-145.03 44.56z"/&gt;&lt;/svg&gt; (Roel) PhD in insurance data science, now senior data analyst at [Prophecy Labs](https://www.prophecylabs.com/)
+
+---
+
+name: why-this-course # inspired by Grant McDermott intro lecture
+
+# Why this course?
+
+### The goals of this course .font140[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#116E8A;" viewBox="0 0 512 512"&gt;&lt;path d="M505.05 19.1a15.89 15.89 0 0 0-12.2-12.2C460.65 0 435.46 0 410.36 0c-103.2 0-165.1 55.2-211.29 128H94.87A48 48 0 0 0 52 154.49l-49.42 98.8A24 24 0 0 0 24.07 288h103.77l-22.47 22.47a32 32 0 0 0 0 45.25l50.9 50.91a32 32 0 0 0 45.26 0L224 384.16V488a24 24 0 0 0 34.7 21.49l98.7-49.39a47.91 47.91 0 0 0 26.5-42.9V312.79c72.59-46.3 128-108.4 128-211.09.1-25.2.1-50.4-6.85-82.6zM384 168a40 40 0 1 1 40-40 40 40 0 0 1-40 40z"/&gt;&lt;/svg&gt;]
+
+--
+
+* develop practical .KULbginline[machine learning (ML) foundations in Python] 
+
+--
+
+* .KULbginline[fill in the gaps] left by traditional training in actuarial science or econometrics
+
+--
+
+* focus on the use of ML methods for the .KULbginline[analysis of frequency + severity data], but also .KULbginline[non-standard data] such as images 
+
+--
+
+* .KULbginline[explore] a substantial range of .KULbginline[methods (and data types)] (from GLMs to deep learning), but - most importantly - .KULbginline[build foundation] so that you can explore other methods (and data types) yourself. 
+
+--
+
+&lt;br&gt;
+
+&gt; *"In short, we will cover things that we wish someone had taught us in our undergraduate programs."* 
+&gt; &lt;br&gt;
+&gt; .font80[This quote is from the [Data science for economists course](http://github.com/uo-ec607/lectures) by Grant McDermott.]
+
+---
+
+# Module 1's outline
+
+.pull-left[
+
+* [Prologue](#prologue)
+
+* [Knowing me, knowing you: &lt;br&gt; statistical and machine learning](#knowing)
+
+  - Supervised and unsupervised learning
+  - Regression and classification
+  - Statistical modeling: the two cultures
+
+* [Model accuracy and loss functions](#accuracy)
+
+* [Overfitting and bias-variance tradeoff](#overfit)
+
+* [Data splitting, Resampling methods](#resampling)
+
+]
+
+.pull-right[
+
+* [Parameter tuning](#tuning) 
+
+  - with `scikit-Learn`
+
+* [Target and feature engineering](#engineering)
+
+  - Data leakage
+  - Pre-processing steps
+  - Specifying blue-prints with `scikit-Learn` 
+  - Putting it all together: tuning and preprocessing via the pipeline module
+
+* [Regression models](#regression)
+
+  - Creating models in Python
+  - GLMs with `statsmodels`
+  - GAMs with `statsmodels`
+  - Regularized (G)LMs with `scikit-learn` and `statsmodels`.
+
+]
+
+
+---
+
+name: map-ML-world
+class: right, middle, clear
+background-image: url("img/map_ML_world.jpg")
+background-size: 45% 
+background-position: left
+
+
+.KULbginline[Some roadmaps to explore the ML landscape...] 
+
+&lt;img src = "img/AI_ML_DL.jpg" height = "350px" /&gt;
+
+.font60[Source: [Machine Learning for Everyone In simple words. With real-world examples. Yes, again.](https://vas3k.com/blog/machine_learning/)]
+
+
+---
+
+name: map-ML-world
+class: right, middle, clear
+background-image: url("img/main_types_ML.jpg")
+background-size: 85% 
+background-position: middle
+
+---
+
+class: inverse, center, middle
+name: knowing
+
+# Knowing me, knowing you: 
+&lt;br&gt; &lt;br&gt;
+# statistical and machine learning 
+
+&lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#FAFAFA' size=1px width=796px&gt;&lt;/html&gt;
+
+---
+
+name: supervised-learning
+
+# Supervised learning
+
+.pull-left-alt[
+
+Supervised learning builds ("learns") a .blue[model] `\(\color{#3b3b9a}{f}\)` (*the Signal*) such that the .orange[outcome or target] `\(\color{#fb6107}{Y}\)` can be written as
+
+`$$\color{#FFA500}{Y} = \color{#3b3b9a}{f}(\color{#e64173}{x_1, \ldots, x_p}) + \epsilon$$`
+with .pink[features] `\(\color{#e64173}{x_1, \ldots, x_p}\)` and error term `\(\epsilon\)` (*the Noise*).
+
+Supervised learners construct .KULbginline[predictive models].
+
+&lt;br&gt; &lt;br&gt;
+
+.footnote[Picture taken from [Machine Learning for Everyone. In simple words. With real-world examples. Yes, again](https://vas3k.com/blog/machine_learning/)]
+
+]
+
+.pull-right-alt[
+
+.center[
+&lt;img src="img/supervised_unsupervised_drawing.jpg" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+
+
+
+]
+---
+
+
+
+name: unsupervised-learning
+
+# Unsupervised learning
+
+.pull-left-alt[
+
+With unsupervised learning there is .KULbginline[NO] .orange[outcome or target] `\(\color{#FFA500}{Y}\)`, only the feature vector `\(\color{#e64173}{x = (x_1, \ldots, x_p)}\)`. 
+
+Let `\(n\)` denote the sample size and `\(p\)` the number of features. 
+
+Then, `\(\color{#e64173}{X}\)` is the `\(n \times p\)` matrix of features, with `\(\color{#e64173}{x}_{i,j}\)` observation `\(i\)` on variable or feature `\(j\)`.
+
+Unsupervised learners construct .KULbginline[descriptive models], without any *supervising* output, letting the data "speak for itself".
+
+
+]
+
+.pull-right-alt[
+
+.center[
+&lt;img src="img/K-means_drawing.jpg" width="80%" height="55%" style="display: block; margin: auto;" /&gt;
+]
+
+.footnote[Picture taken from [Machine Learning for Everyone. In simple words. With real-world examples. Yes, again](https://vas3k.com/blog/machine_learning/)]
+
+
+]
+---
+
+name: what's-in-a-name
+
+# What's in a name?
+
+.KULbginline[Machine learning] constructs algorithms that learn from data. 
+
+--
+
+.KULbginline[Statistical learning] emphasizes statistical models and the assessment of uncertainty.
+
+--
+
+.KULbginline[Data science] applies mathematics, statistics, machine learning, engineering, etc. to extract knowledge form data.
+--
+
+&gt; *"Data Science is statistics on a Mac &lt;svg style="height:0.8em;top:.04em;position:relative;fill:#116E8A;" viewBox="0 0 384 512"&gt;&lt;path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/&gt;&lt;/svg&gt;. "*
+
+.center[
+&lt;img src="img/ElementsStatLearning.png" alt="Drawing" style="height: 250px;"/&gt;  &amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;img src="img/ISL.png" alt="Drawing" style="height: 250px;"/&gt; 
+&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;img src="img/AppliedPredMod.png" alt="Drawing" style="height: 250px;"/&gt; &amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;img src="img/python_jake.png" alt="Drawing" style="height: 250px;"/&gt; &amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;img src="img/molnar.png" alt="Drawing" style="height: 250px;"/&gt;
+]
+
+Source: Brandon M. Greenwell on [Introduction to Machine Learning in &lt;svg style="height:0.8em;top:.04em;position:relative;fill:#F92672;" viewBox="0 0 581 512"&gt;&lt;path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/&gt;&lt;/svg&gt;](https://github.com/bgreenwell/intro-ml-r).
+
+---
+
+name: two-cultures
+
+# Statistical modeling: the two cultures
+
+Consider a vector of input variables `\(\color{#e64173}{x}\)`, being transformed into some vector of response variables `\(\color{#FFA500}{y}\)` via a black box algorithm. 
+
+.center[
+&lt;img src="img/Breiman_nature.png" alt="Drawing" style="width: 300px;"/&gt;  
+]
+
+--
+
+.pull-left[
+
+.KULbginline[Statistical learning or data modeling culture]
+
+* assume statistical model, estimate parameter values
+* validate with goodness-of-fit tests and residual inspection
+
+.center[
+&lt;img src="img/Breiman_data_modeling.png" alt="Drawing" style="width: 300px;"/&gt;  
+]
+]
+--
+
+.pull-right[
+
+.KULbginline[Machine learning or algo modeling culture]
+
+* inside of the box is complex and unknown
+* find algorithm `\(\color{#3b3b9a}{f}(\color{#e64173}{x})\)` to predict `\(\color{#FFA500}{y}\)`
+* measure performance by predictive accuracy
+
+.center[
+&lt;img src="img/Breiman_algo_modeling.png" alt="Drawing" style="width: 300px;"/&gt;  
+]
+
+]
+
+Source: Breiman (2001, Statistical Science) on *Statistical modeling: the two cultures.*
+---
+
+name: statistical-machine-learning
+
+# Newspeak from the two cultures
+
+&lt;br&gt; 
+&lt;br&gt;
+
+| Statistical learning           |  Machine learning
+:------:|:-------------------------:|:-------------------------:
+.KULbginline[origin] | statistics | computer science 
+.KULbginline[*f(x)*] | model | algorithm
+.KULbginline[emphasis] | interpretability, precision and uncertainty | large scale applicability, prediction accuracy
+.KULbginline[jargon] | parameters, estimation | weights, learning
+.KULbginline[CI] | uncertainty of parameters | no notion of uncertainty 
+.KULbginline[assumptions] | explicit a priori assumption | no prior assumption, learn from the data
+
+&lt;br&gt;
+
+Source: read the blog [Why a mathematician, statistician and machine learner solve the same problem differently](https://blog.galvanize.com/why-a-mathematician-statistician-machine-learner-solve-the-same-problem-differently-2/)
+
+
+---
+
+name: yourturn
+class: clear
+
+.left-column[
+
+&lt;!-- Add icon library --&gt;
+&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"&gt;
+
+## &lt;i class="fa fa-edit"&gt;&lt;/i&gt; &lt;br&gt; Your turn
+
+
+]
+
+.right-column[
+
+As discussed in the lecture, many problems in ML can be approached as a .KULbginline[regression], .KULbginline[classification] or .KULbginline[clustering] problem. 
+
+&lt;br&gt;
+
+.hi-pink[Q]: consider the following .hi-pink[three problem settings] and .hi-pink[label them] as regression, classification or clustering.
+
+&lt;br&gt;
+
+1. In disability insurance: how do disability rates depend on the state of the economy (e.g. GDP)?
+
+2. In MTPL insurance: predict whether a claim is attritional or large, *in casu* a claim that exceeds the threshold of 100 000 EUR?
+
+3. How can we group customers based on the insurance products they bought from the company? 
+
+]
+
+
+---
+
+name: ames
+
+# Exploring the Google Colab environment &lt;img src="img/colab.png" class="title-hex"&gt;
+
+We will now visit the Google Colab for the first time and explore the packages and data sets that will be used in today's session.
+
+We will use the Ames Iowa housing data. There are 2,930 properties in the data set. 
+
+The `Sale_Price` (target or response) was recorded along with 80 predictors, including:
+
+* location (e.g. neighborhood) and lot information
+* house components (garage, fireplace, pool, porch, etc.)
+* general assessments such as overall quality and condition
+* number of bedrooms, baths, and so on. 
+
+More details in [De Cock (2011, Journal of Statistics Education)](http://ww2.amstat.org/publications/jse/v19n3/decock.pdf).
+
+The raw data are at [`https://vincentarelbundock.github.io/Rdatasets`](http://bit.ly/2whgsQM).
+
+
+---
+
+class: inverse, center, middle
+name: accuracy
+
+# Model accuracy and loss functions
+
+&lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#FAFAFA' size=1px width=796px&gt;&lt;/html&gt;
+
+---
+
+# Predictive modeling
+
+How to use the observed data to learn or to estimate the unknown `\(\color{#3b3b9a}{f}(.)\)`?
+
+`$$\begin{eqnarray*}
+\color{#FFA500}{y} &amp;=&amp; \color{#3b3b9a}{f}(\color{#e64173}{x_1,x_2,\ldots,x_p})+\epsilon.
+\end{eqnarray*}$$`
+
+--
+
+How do I .KULbginline[estimate] `\(\color{#3b3b9a}{f}(.)\)` - one way to phrase *all questions* that underly statistical &amp; machine learning.
+
+--
+
+.font140[.KULbginline[Take-aways]] .font160[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#116E8A;" viewBox="0 0 576 512"&gt;&lt;path d="M576 240c0-23.63-12.95-44.04-32-55.12V32.01C544 23.26 537.02 0 512 0c-7.12 0-14.19 2.38-19.98 7.02l-85.03 68.03C364.28 109.19 310.66 128 256 128H64c-35.35 0-64 28.65-64 64v96c0 35.35 28.65 64 64 64h33.7c-1.39 10.48-2.18 21.14-2.18 32 0 39.77 9.26 77.35 25.56 110.94 5.19 10.69 16.52 17.06 28.4 17.06h74.28c26.05 0 41.69-29.84 25.9-50.56-16.4-21.52-26.15-48.36-26.15-77.44 0-11.11 1.62-21.79 4.41-32H256c54.66 0 108.28 18.81 150.98 52.95l85.03 68.03a32.023 32.023 0 0 0 19.98 7.02c24.92 0 32-22.78 32-32V295.13C563.05 284.04 576 263.63 576 240zm-96 141.42l-33.05-26.44C392.95 311.78 325.12 288 256 288v-96c69.12 0 136.95-23.78 190.95-66.98L480 98.58v282.84z"/&gt;&lt;/svg&gt;] &amp;nbsp; - &amp;nbsp; main reasons we want to .KULbginline[learn about] `\(\color{#3b3b9a}{f}(.)\)` 
+
+--
+
+.pull-left[
+.font120[.KULbginline[prediction]] 
+&lt;br&gt;
+predict the target `\(\color{#FFA500}{y}\)` as `\(\hat{\color{#3b3b9a}{f}}(\color{#e64173}{x})\)`
+&lt;br&gt;
+.font140[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#116E8A;" viewBox="0 0 512 512"&gt;&lt;path d="M509.5 184.6L458.9 32.8C452.4 13.2 434.1 0 413.4 0H272v192h238.7c-.4-2.5-.4-5-1.2-7.4zM240 0H98.6c-20.7 0-39 13.2-45.5 32.8L2.5 184.6c-.8 2.4-.8 4.9-1.2 7.4H240V0zM0 224v240c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V224H0z"/&gt;&lt;/svg&gt;] - as black box setting? 
+&lt;br&gt; &lt;br&gt;
+.font120[.KULbginline[inference]]
+&lt;br&gt;
+how does target `\(\color{#FFA500}{y}\)` depend on features `\(\color{#e64173}{x}\)`? 
+&lt;br&gt;
+.font140[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#116E8A;" viewBox="0 0 640 512"&gt;&lt;path d="M425.7 256c-16.9 0-32.8-9-41.4-23.4L320 126l-64.2 106.6c-8.7 14.5-24.6 23.5-41.5 23.5-4.5 0-9-.6-13.3-1.9L64 215v178c0 14.7 10 27.5 24.2 31l216.2 54.1c10.2 2.5 20.9 2.5 31 0L551.8 424c14.2-3.6 24.2-16.4 24.2-31V215l-137 39.1c-4.3 1.3-8.8 1.9-13.3 1.9zm212.6-112.2L586.8 41c-3.1-6.2-9.8-9.8-16.7-8.9L320 64l91.7 152.1c3.8 6.3 11.4 9.3 18.5 7.3l197.9-56.5c9.9-2.9 14.7-13.9 10.2-23.1zM53.2 41L1.7 143.8c-4.6 9.2.3 20.2 10.1 23l197.9 56.5c7.1 2 14.7-1 18.5-7.3L320 64 69.8 32.1c-6.9-.8-13.5 2.7-16.6 8.9z"/&gt;&lt;/svg&gt;] - as white box setting? 
+]
+--
+.pull-right[
+
+&lt;img src="img/prediction_inference.png" width="2200" style="display: block; margin: auto;" /&gt;
+]
+
+
+---
+
+name: prediction-error
+
+# Prediction errors
+
+Why we're stuck with .KULbginline[irreducible error]
+
+assume `\(\hat{\color{#3b3b9a}{f}}\)` and `\(\color{#e64173}{x}\)` given, then
+
+$$
+`\begin{aligned}
+  \mathop{E}\left[ \left\{ \color{#FFA500}{y} - \hat{\color{#FFA500}{y}} \right\}^2 \right]
+  &amp;=
+  \mathop{E}\left[ \left\{ \color{#3b3b9a}{f}(\color{#e64173}{x}) + \epsilon - \hat{\color{#3b3b9a}{f}}(\color{#e64173}{x}) \right\}^2 \right] \\
+  &amp;= \underbrace{\left[ \color{#3b3b9a}{f}(\color{#e64173}{x}) - \hat{\color{#3b3b9a}{f}}(\color{#e64173}{x}) \right]^2}_{\text{Reducible}} + \underbrace{\mathop{\text{Var}} \left( \color{#e64173}{\epsilon} \right)}_{\text{Irreducible}}
+\end{aligned}`
+$$
+In .KULbginline[less math]:
+
+- if `\(\epsilon\)` exists, then `\(\color{#e64173}{x}\)` cannot perfectly explain `\(\color{#FFA500}{y}\)`
+
+- so even if `\(\hat{\color{#3b3b9a}{f}} = \color{#3b3b9a}{f}\)`, we still have irreducible error.
+
+--
+
+Thus, to form our .KULbginline[best predictors], we will .KULbginline[minimize reducible error].
+
+---
+
+name: model-accuracy
+
+# Model accuracy
+
+We assess .KULbginline[model] or .KULbginline[predictive accuracy] by 
+evaluating how well predictions actually match observed data.
+
+--
+
+Use .KULbginline[loss functions], i.e. metrics that compare predicted values to actual values.
+
+--
+
+.pull-left[.KULbginline[Regression], use e.g. the .hi-pink[Mean Squared Error (MSE)]
+
+`$$\begin{eqnarray*}
+\frac{1}{n} \sum_{i=1}^n (\color{#FFA500}{y}_i - \hat{\color{#3b3b9a}{f}}(\color{#e64173}{x}_i))^2,
+\end{eqnarray*}$$`
+
+Recall: `\(\color{#FFA500}{y}_i - \hat{\color{#FFA500}{y}}_i = \color{#FFA500}{y}_i - \hat{\color{#3b3b9a}{f}}(\color{#e64173}{x}_i)\)` is the prediction error.
+
+Objective &lt;svg style="height:0.8em;top:.04em;position:relative;fill:#116E8A;" viewBox="0 0 496 512"&gt;&lt;path d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"/&gt;&lt;/svg&gt; : minimize!]
+
+--
+
+.pull-right[.KULbginline[Classification], use e.g. the .hi-pink[cross-entropy] or .hi-pink[log loss]
+`$$\begin{eqnarray*}
+-\frac{1}{n} \sum_{i=1}^n \left(\color{#FFA500}{y}_i \cdot \log{(p_i)} + (1-\color{#FFA500}{y}_i) \cdot \log{(1-p_i)}\right).
+\end{eqnarray*}$$`
+ 
+Objective &lt;svg style="height:0.8em;top:.04em;position:relative;fill:#116E8A;" viewBox="0 0 496 512"&gt;&lt;path d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"/&gt;&lt;/svg&gt; : minimize!
+
+]
+
+--
+
+&lt;br&gt;
+
+.KULbginline[Many other useful loss functions] (e.g. deviance in regression, Gini index in classification).
+
+.font140[.KULbginline[Take-away]] .font160[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#116E8A;" viewBox="0 0 576 512"&gt;&lt;path d="M576 240c0-23.63-12.95-44.04-32-55.12V32.01C544 23.26 537.02 0 512 0c-7.12 0-14.19 2.38-19.98 7.02l-85.03 68.03C364.28 109.19 310.66 128 256 128H64c-35.35 0-64 28.65-64 64v96c0 35.35 28.65 64 64 64h33.7c-1.39 10.48-2.18 21.14-2.18 32 0 39.77 9.26 77.35 25.56 110.94 5.19 10.69 16.52 17.06 28.4 17.06h74.28c26.05 0 41.69-29.84 25.9-50.56-16.4-21.52-26.15-48.36-26.15-77.44 0-11.11 1.62-21.79 4.41-32H256c54.66 0 108.28 18.81 150.98 52.95l85.03 68.03a32.023 32.023 0 0 0 19.98 7.02c24.92 0 32-22.78 32-32V295.13C563.05 284.04 576 263.63 576 240zm-96 141.42l-33.05-26.44C392.95 311.78 325.12 288 256 288v-96c69.12 0 136.95-23.78 190.95-66.98L480 98.58v282.84z"/&gt;&lt;/svg&gt;] &amp;nbsp; - &amp;nbsp; a loss function emphasizes certain types of errors over others &lt;svg style="height:0.8em;top:.04em;position:relative;fill:#116E8A;" viewBox="0 0 448 512"&gt;&lt;path d="M313.941 216H12c-6.627 0-12 5.373-12 12v56c0 6.627 5.373 12 12 12h301.941v46.059c0 21.382 25.851 32.09 40.971 16.971l86.059-86.059c9.373-9.373 9.373-24.569 0-33.941l-86.059-86.059c-15.119-15.119-40.971-4.411-40.971 16.971V216z"/&gt;&lt;/svg&gt; pick a meaningful one!
+
+
+---
+
+class: inverse, center, middle
+name: overfit
+
+# Overfitting and bias-variance trade off
+
+&lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#FAFAFA' size=1px width=796px&gt;&lt;/html&gt;
+
+
+---
+
+# Overfitting
+
+The .KULbginline[Signal and the Noise] discussion!
+
+--
+
+Which of the following three models (in green-blue-ish) will best generalize to new data? 
+
+&lt;img src="img/over-and-underfitting.png" width="1747" style="display: block; margin: auto;" /&gt;
+
+.footnote[Inspired by Brandon Greenwell's [Introduction to Machine Learning in &lt;svg style="height:0.8em;top:.04em;position:relative;fill:#F92672;" viewBox="0 0 581 512"&gt;&lt;path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/&gt;&lt;/svg&gt;](https://github.com/bgreenwell/intro-ml-r).]
+
+---
+
+# Overfitting (cont.)
+
+With a small training error, but large test error, the model is .KULbginline[overfitting] or working too hard!
+
+--
+
+The expected value of the .hi-pink[test MSE]:
+
+`$$\begin{eqnarray*}
+    E\left(\color{#FFA500}{y}_0-\hat{\color{#3b3b9a}{f}}(\color{#e64173}{x}_0)\right)^2 &amp;=&amp; \text{Var}(\hat{\color{#3b3b9a}{f}}(\color{#e64173}{x}_0))+[\text{Bias}(\hat{\color{#3b3b9a}{f}}(\color{#e64173}{x}_0))]^2+\text{Var}(\epsilon).
+    \end{eqnarray*}$$`
+
+--
+
+.font140[.KULbginline[In general]] - with more flexible methods
+
+* variance .font140[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#116E8A;" viewBox="0 0 512 512"&gt;&lt;path d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm143.6 28.9l72.4-75.5V392c0 13.3 10.7 24 24 24h16c13.3 0 24-10.7 24-24V209.4l72.4 75.5c9.3 9.7 24.8 9.9 34.3.4l10.9-11c9.4-9.4 9.4-24.6 0-33.9L273 107.7c-9.4-9.4-24.6-9.4-33.9 0L106.3 240.4c-9.4 9.4-9.4 24.6 0 33.9l10.9 11c9.6 9.5 25.1 9.3 34.4-.4z"/&gt;&lt;/svg&gt;] and bias .font140[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#116E8A;" viewBox="0 0 512 512"&gt;&lt;path d="M504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-143.6-28.9L288 302.6V120c0-13.3-10.7-24-24-24h-16c-13.3 0-24 10.7-24 24v182.6l-72.4-75.5c-9.3-9.7-24.8-9.9-34.3-.4l-10.9 11c-9.4 9.4-9.4 24.6 0 33.9L239 404.3c9.4 9.4 24.6 9.4 33.9 0l132.7-132.7c9.4-9.4 9.4-24.6 0-33.9l-10.9-11c-9.5-9.5-25-9.3-34.3.4z"/&gt;&lt;/svg&gt;]
+
+* their relative rate of change determines whether the test error increases or decreases
+
+--
+
+.font140[.KULbginline[Take-aways]] .font160[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#116E8A;" viewBox="0 0 576 512"&gt;&lt;path d="M576 240c0-23.63-12.95-44.04-32-55.12V32.01C544 23.26 537.02 0 512 0c-7.12 0-14.19 2.38-19.98 7.02l-85.03 68.03C364.28 109.19 310.66 128 256 128H64c-35.35 0-64 28.65-64 64v96c0 35.35 28.65 64 64 64h33.7c-1.39 10.48-2.18 21.14-2.18 32 0 39.77 9.26 77.35 25.56 110.94 5.19 10.69 16.52 17.06 28.4 17.06h74.28c26.05 0 41.69-29.84 25.9-50.56-16.4-21.52-26.15-48.36-26.15-77.44 0-11.11 1.62-21.79 4.41-32H256c54.66 0 108.28 18.81 150.98 52.95l85.03 68.03a32.023 32.023 0 0 0 19.98 7.02c24.92 0 32-22.78 32-32V295.13C563.05 284.04 576 263.63 576 240zm-96 141.42l-33.05-26.44C392.95 311.78 325.12 288 256 288v-96c69.12 0 136.95-23.78 190.95-66.98L480 98.58v282.84z"/&gt;&lt;/svg&gt;]
+
+* U-shape curves of .hi-pink[test MSE] w.r.t model flexibility
+
+* the .hi-pink[bias-variance tradeoff] is central to quality prediction.
+
+---
+
+# Bias-variance trade off
+
+&lt;br&gt; 
+
+.center[
+&lt;img src="img/bias_variance_trade_off.png" alt="Drawing" style="width: 600px;"/&gt;  
+]
+
+Source: James et al. (2013) on [http://faculty.marshall.usc.edu/gareth-james/ISL/](An introduction to statistical learning).
+
+---
+
+name: yourturn
+class: clear
+
+.left-column[
+
+&lt;!-- Add icon library --&gt;
+&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"&gt;
+
+## &lt;i class="fa fa-edit"&gt;&lt;/i&gt; &lt;br&gt; Your turn
+
+
+]
+
+.right-column[
+
+Data are generated from: `\(\color{#FFA500}{y} = \color{#3b3b9a}{f}(\color{#e64173}{x})+\epsilon\)`, with the black curve as the true `\(\color{#3b3b9a}{f}\)`. The orange (linear regression), blue (smoothing splines) and green (smoothing splines) curves are three estimates for `\(\color{#3b3b9a}{f}\)`, with increasing level of complexity.
+
+.hi-pink[Q]: which model do you prefer (orange, blue, green) for each of the following examples? Why? 
+
+.center[
+&lt;img src="img/2.9 ISL.png" alt="Drawing" style="width: 500px;"/&gt; 
+]
+
+.footnote[Example from James et al. (2013) on [http://faculty.marshall.usc.edu/gareth-james/ISL/](An introduction to statistical learning).]
+
+]
+
+---
+
+name: yourturn
+class: clear
+
+.left-column[
+
+&lt;!-- Add icon library --&gt;
+&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"&gt;
+
+## &lt;i class="fa fa-edit"&gt;&lt;/i&gt; &lt;br&gt; Your turn
+
+
+]
+
+.right-column[
+
+Data are generated from: `\(\color{#FFA500}{y} = \color{#3b3b9a}{f}(\color{#e64173}{x})+\epsilon\)`, with the black curve as the true `\(\color{#3b3b9a}{f}\)`. The orange (linear regression), blue (smoothing splines) and green (smoothing splines) curves are three estimates for `\(\color{#3b3b9a}{f}\)`, with increasing level of complexity.
+
+.hi-pink[Q]: which model do you prefer (orange, blue, green) for each of the following examples? Why? 
+
+.center[
+&lt;img src="img/2.10 ISL.png" alt="Drawing" style="width: 500px;"/&gt; 
+]
+
+.footnote[Example from James et al. (2013) on [http://faculty.marshall.usc.edu/gareth-james/ISL/](An introduction to statistical learning).]
+
+]
+
+---
+
+name: yourturn
+class: clear
+
+.left-column[
+
+&lt;!-- Add icon library --&gt;
+&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"&gt;
+
+## &lt;i class="fa fa-edit"&gt;&lt;/i&gt; &lt;br&gt; Your turn
+
+
+]
+
+.right-column[
+
+Data are generated from: `\(\color{#FFA500}{y} = \color{#3b3b9a}{f}(\color{#e64173}{x})+\epsilon\)`, with the black curve as the true `\(\color{#3b3b9a}{f}\)`. The orange (linear regression), blue (smoothing splines) and green (smoothing splines) curves are three estimates for `\(\color{#3b3b9a}{f}\)`, with increasing level of complexity.
+
+.hi-pink[Q]: which model do you prefer (orange, blue, green) for each of the following examples? Why? 
+
+.center[
+&lt;img src="img/2.11 ISL.png" alt="Drawing" style="width: 500px;"/&gt; 
+]
+
+.footnote[Example from James et al. (2013) on [http://faculty.marshall.usc.edu/gareth-james/ISL/](An introduction to statistical learning).]
+
+]
+
+---
+
+name: yourturn
+class: clear
+
+.left-column[
+
+&lt;!-- Add icon library --&gt;
+&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"&gt;
+
+## &lt;i class="fa fa-edit"&gt;&lt;/i&gt; &lt;br&gt; Your turn
+
+
+]
+
+.right-column[
+
+.font120[The *K*-nearest neighbors (KNN) classifier]
+
+- take the *K* observations in the training data set that are 'closest' to test observation `\(\color{#e64173}{x}_0\)`, calculate 
+
+
+`$$\begin{eqnarray*}
+\text{Pr}(\color{#FFA500}{Y}=j|\color{#e64173}{X} = \color{#e64173}{x}_0) &amp;=&amp; \frac{1}{K} \sum_{i \in \mathcal{N}_0} \mathbb{I}(\color{#FFA500}{y}_i=j).
+\end{eqnarray*}$$`
+
+- KNN then assigns the test observation `\(\color{#e64173}{x}_0\)` to the class `\(j\)` with the highest probability, e.g. with *K=3* (from James et al., 2013)
+
+.center[
+&lt;img src="img/2.14 ISL.png" alt="Drawing" style="width: 300px;"/&gt; 
+]
+
+.hi-pink[Q]: is KNN a supervised learning or unsupervised learning method? Discuss.
+
+]
+
+---
+
+name: yourturn
+class: clear
+
+.left-column[
+
+&lt;!-- Add icon library --&gt;
+&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"&gt;
+
+## &lt;i class="fa fa-edit"&gt;&lt;/i&gt; &lt;br&gt; Your turn
+
+
+]
+
+.right-column[
+
+.font120[The *K*-nearest neighbors (KNN) classifier (cont.)]
+
+Now compare KNN with *K* equals 1, 10 and 100.
+
+.center[
+&lt;img src="img/KNN_K_1.png" alt="Drawing" style="height: 250px;"/&gt; 
+&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;img src="img/KNN_K_10.png" alt="Drawing" style="height: 250px;"/&gt; 
+&amp;nbsp;&amp;nbsp;&amp;nbsp; &lt;img src="img/KNN_K_100.png" alt="Drawing" style="height: 250px;"/&gt; 
+]
+
+.hi-pink[Q]: which classifier do you prefer? Which of these classifiers is under-fitting, which one is over-fitting?
+
+]
+
+---
+
+class: inverse, center, middle
+name: resampling
+
+# Data splitting and resampling methods &lt;br&gt; with scikit learn
+
+&lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#FAFAFA' size=1px width=796px&gt;&lt;/html&gt;
+
+
+---
+
+name: data-splitting
+
+# Data splitting
+
+We fit our model on past data `\(\{(\color{#e64173}{x}_1,\color{#FFA500}{y}_1),(\color{#e64173}{x}_2,\color{#FFA500}{y}_2),\ldots, (\color{#e64173}{x}_n,\color{#FFA500}{y}_n)\}\)`
+and get `\(\hat{\color{#3b3b9a}{f}}\)`. 
+
+*What we want*: how does our model .KULbginline[generalize] to new, unseen data `\((\color{#e64173}{x}_0,\color{#FFA500}{y}_0)\)`, or: &amp;nbsp; is `\(\hat{\color{#3b3b9a}{f}}(\color{#e64173}{x}_0)\)` close to `\(\color{#FFA500}{y}_0\)`?
+
+.left-column[
+
+.KULbginline[Training set]
+
+* to develop, to train, to tune, to compare different settings, ...
+
+.KULbginline[Test set]
+
+* to obtain unbiased estimate of final model's performance.
+]
+
+.right-column[
+
+&lt;img src="img/data_splitting.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; .footnote[Picture taken from [Introduction to Machine Learning in &lt;svg style="height:0.8em;top:.04em;position:relative;fill:#F92672;" viewBox="0 0 581 512"&gt;&lt;path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/&gt;&lt;/svg&gt;](https://github.com/bgreenwell/intro-ml-r).]
+
+
+]
+
+---
+
+# Resampling methods
+
+In [Data splitting](#data-splitting), we discussed *training* and *test* set. Let's now dive deeper into *resampling* methods.
+
+.hi-KUL[Validation set] (visual inspired by [Ed Rubin's course](https://github.com/edrubin/EC524W20))
+
+- we hold out a subset of the training data (e.g. 30%) and then evaluate the model on this held out validation set
+
+- calculate the loss function on this validation set, as approximation of the true test error
+
+- .font140[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#116E8A;" viewBox="0 0 512 512"&gt;&lt;path d="M466.27 225.31c4.674-22.647.864-44.538-8.99-62.99 2.958-23.868-4.021-48.565-17.34-66.99C438.986 39.423 404.117 0 327 0c-7 0-15 .01-22.22.01C201.195.01 168.997 40 128 40h-10.845c-5.64-4.975-13.042-8-21.155-8H32C14.327 32 0 46.327 0 64v240c0 17.673 14.327 32 32 32h64c11.842 0 22.175-6.438 27.708-16h7.052c19.146 16.953 46.013 60.653 68.76 83.4 13.667 13.667 10.153 108.6 71.76 108.6 57.58 0 95.27-31.936 95.27-104.73 0-18.41-3.93-33.73-8.85-46.54h36.48c48.602 0 85.82-41.565 85.82-85.58 0-19.15-4.96-34.99-13.73-49.84zM64 296c-13.255 0-24-10.745-24-24s10.745-24 24-24 24 10.745 24 24-10.745 24-24 24zm330.18 16.73H290.19c0 37.82 28.36 55.37 28.36 94.54 0 23.75 0 56.73-47.27 56.73-18.91-18.91-9.46-66.18-37.82-94.54C206.9 342.89 167.28 272 138.92 272H128V85.83c53.611 0 100.001-37.82 171.64-37.82h37.82c35.512 0 60.82 17.12 53.12 65.9 15.2 8.16 26.5 36.44 13.94 57.57 21.581 20.384 18.699 51.065 5.21 65.62 9.45 0 22.36 18.91 22.27 37.81-.09 18.91-16.71 37.82-37.82 37.82z"/&gt;&lt;/svg&gt;] high variability + inefficient use of data
+
+- e.g., a .hi-KUL[validation set (30%)] and .hi-pink[training set (70%)].
+
+
+
+&lt;img src="ML_part1_Python_files/figure-html/plot-validation-set-1.svg" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Resampling methods (cont.)
+
+In [Data splitting](#data-splitting), we discussed *training* and *test* set. Let's now dive deeper into *resampling* methods.
+
+.hi-KUL[*k* fold cross validation] (visual inspired by [Ed Rubin's course](https://github.com/edrubin/EC524W20))
+
+- divide training data into *k* equally sized groups (e.g. .hi-KUL[group 1] on the picture)
+
+- iterate over the *k* groups, treating each as validation set once (and train model on the other *k-1* groups) (e.g. get .hi-KUL[MSE&lt;sub&gt;1&lt;sub/&gt;] corresponding to fold 1)
+
+- average the folds' loss to estimate the true test error
+
+- .font140[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#116E8A;" viewBox="0 0 512 512"&gt;&lt;path d="M466.27 286.69C475.04 271.84 480 256 480 236.85c0-44.015-37.218-85.58-85.82-85.58H357.7c4.92-12.81 8.85-28.13 8.85-46.54C366.55 31.936 328.86 0 271.28 0c-61.607 0-58.093 94.933-71.76 108.6-22.747 22.747-49.615 66.447-68.76 83.4H32c-17.673 0-32 14.327-32 32v240c0 17.673 14.327 32 32 32h64c14.893 0 27.408-10.174 30.978-23.95 44.509 1.001 75.06 39.94 177.802 39.94 7.22 0 15.22.01 22.22.01 77.117 0 111.986-39.423 112.94-95.33 13.319-18.425 20.299-43.122 17.34-66.99 9.854-18.452 13.664-40.343 8.99-62.99zm-61.75 53.83c12.56 21.13 1.26 49.41-13.94 57.57 7.7 48.78-17.608 65.9-53.12 65.9h-37.82c-71.639 0-118.029-37.82-171.64-37.82V240h10.92c28.36 0 67.98-70.89 94.54-97.46 28.36-28.36 18.91-75.63 37.82-94.54 47.27 0 47.27 32.98 47.27 56.73 0 39.17-28.36 56.72-28.36 94.54h103.99c21.11 0 37.73 18.91 37.82 37.82.09 18.9-12.82 37.81-22.27 37.81 13.489 14.555 16.371 45.236-5.21 65.62zM88 432c0 13.255-10.745 24-24 24s-24-10.745-24-24 10.745-24 24-24 24 10.745 24 24z"/&gt;&lt;/svg&gt;] greater accuracy (compared to validation set).
+
+
+
+&lt;img src="ML_part1_Python_files/figure-html/plot-CV-set-1.svg" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Resampling methods (cont.)
+
+In [Data splitting](#data-splitting), we discussed *training* and *test* set. Let's now dive deeper into *resampling* methods.
+
+.hi-KUL[*k* fold cross validation] (visual inspired by [Ed Rubin's course](https://github.com/edrubin/EC524W20))
+
+- divide training data into *k* equally sized groups (e.g. .hi-KUL[group 1] on the picture)
+
+- iterate over the *k* groups, treating each as validation set once (and train model on the other *k-1* groups) (e.g. get .hi-KUL[MSE&lt;sub&gt;1&lt;sub/&gt;] corresponding to fold 1)
+
+- average the folds' loss to estimate the true test error
+
+- .font140[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#116E8A;" viewBox="0 0 512 512"&gt;&lt;path d="M466.27 286.69C475.04 271.84 480 256 480 236.85c0-44.015-37.218-85.58-85.82-85.58H357.7c4.92-12.81 8.85-28.13 8.85-46.54C366.55 31.936 328.86 0 271.28 0c-61.607 0-58.093 94.933-71.76 108.6-22.747 22.747-49.615 66.447-68.76 83.4H32c-17.673 0-32 14.327-32 32v240c0 17.673 14.327 32 32 32h64c14.893 0 27.408-10.174 30.978-23.95 44.509 1.001 75.06 39.94 177.802 39.94 7.22 0 15.22.01 22.22.01 77.117 0 111.986-39.423 112.94-95.33 13.319-18.425 20.299-43.122 17.34-66.99 9.854-18.452 13.664-40.343 8.99-62.99zm-61.75 53.83c12.56 21.13 1.26 49.41-13.94 57.57 7.7 48.78-17.608 65.9-53.12 65.9h-37.82c-71.639 0-118.029-37.82-171.64-37.82V240h10.92c28.36 0 67.98-70.89 94.54-97.46 28.36-28.36 18.91-75.63 37.82-94.54 47.27 0 47.27 32.98 47.27 56.73 0 39.17-28.36 56.72-28.36 94.54h103.99c21.11 0 37.73 18.91 37.82 37.82.09 18.9-12.82 37.81-22.27 37.81 13.489 14.555 16.371 45.236-5.21 65.62zM88 432c0 13.255-10.745 24-24 24s-24-10.745-24-24 10.745-24 24-24 24 10.745 24 24z"/&gt;&lt;/svg&gt;] greater accuracy (compared to validation set).
+
+&lt;img src="ML_part1_Python_files/figure-html/plot-CV3-set-1.svg" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Resampling methods (cont.)
+
+In [Data splitting](#data-splitting), we discussed *training* and *test* set. Let's now dive deeper into *resampling* methods.
+
+.hi-KUL[*k* fold cross validation] (picture from [Boehmke &amp; Greenwell](https://koalaverse.github.io/homlr/))
+
+.center[
+&lt;img src="img/k_fold_CV.png" width="95%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# Resampling methods (cont.)
+
+In [Data splitting](#data-splitting), we discussed *training* and *test* set. Let's now dive deeper into *resampling* methods.
+
+.hi-KUL[Leave-one-out cross validation] (visual inspired by [Ed Rubin's course](https://github.com/edrubin/EC524W20))
+
+- each observation takes a turn as the validation set (e.g. get .hi-KUL[MSE&lt;sub&gt;3&lt;sub/&gt;])
+
+- other *n-1* observations are the training set
+
+- average the folds' loss to estimate the true test error
+
+- .font140[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#116E8A;" viewBox="0 0 512 512"&gt;&lt;path d="M466.27 225.31c4.674-22.647.864-44.538-8.99-62.99 2.958-23.868-4.021-48.565-17.34-66.99C438.986 39.423 404.117 0 327 0c-7 0-15 .01-22.22.01C201.195.01 168.997 40 128 40h-10.845c-5.64-4.975-13.042-8-21.155-8H32C14.327 32 0 46.327 0 64v240c0 17.673 14.327 32 32 32h64c11.842 0 22.175-6.438 27.708-16h7.052c19.146 16.953 46.013 60.653 68.76 83.4 13.667 13.667 10.153 108.6 71.76 108.6 57.58 0 95.27-31.936 95.27-104.73 0-18.41-3.93-33.73-8.85-46.54h36.48c48.602 0 85.82-41.565 85.82-85.58 0-19.15-4.96-34.99-13.73-49.84zM64 296c-13.255 0-24-10.745-24-24s10.745-24 24-24 24 10.745 24 24-10.745 24-24 24zm330.18 16.73H290.19c0 37.82 28.36 55.37 28.36 94.54 0 23.75 0 56.73-47.27 56.73-18.91-18.91-9.46-66.18-37.82-94.54C206.9 342.89 167.28 272 138.92 272H128V85.83c53.611 0 100.001-37.82 171.64-37.82h37.82c35.512 0 60.82 17.12 53.12 65.9 15.2 8.16 26.5 36.44 13.94 57.57 21.581 20.384 18.699 51.065 5.21 65.62 9.45 0 22.36 18.91 22.27 37.81-.09 18.91-16.71 37.82-37.82 37.82z"/&gt;&lt;/svg&gt;] very computationally demanding. 
+
+
+
+
+&lt;img src="ML_part1_Python_files/figure-html/plot-LOOCV-set-1.svg" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Working with pandas and scikit-learn &lt;img src="img/Pandas.png" class="title-hex"&gt; &lt;img src="img/Scikit_Learn_Logo.png" class="title-hex"&gt; 
+
+We will now explore basic instructions to: 
+
+* explore the structure of the data set with instructions from `{pandas}`
+* visualize the data using `matplotlib` and `seaborn`
+* split a data set into a training and test set with instructions from `{numpy}` and `{scikit learn}`.
+
+Here: 
+
+* `{pandas}` is a package for data analysis and the manipulation of tabular data; the name is derived from the term **pan**el **da**ta
+* `{numpy}` is a package for scientific computation
+* `{scikit-learn}` is for machine learning in Python, with functions for a.o. preprocessing, model selection, regression and classification.
+
+---
+
+name: scikit-learn-overview
+class: right, middle, clear
+background-image: url("img/scikit-learn-overview.png")
+background-size: 70% 
+background-position: middle
+
+---
+
+name: regressors-classifiers-scikit
+class: clear
+
+.pull-left[
+
+&lt;img src="img/scikit-regressors.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+&lt;img src="img/train-scikit-model.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+]
+
+.pull-right[
+
+&lt;img src="img/scikit-classifiers.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+&lt;img src="img/evaluate-scikit-model.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+]
+
+Pictures taken from [KD Nuggets ultimate scikit-learn ML cheatsheet](https://www.kdnuggets.com/2021/01/ultimate-scikit-learn-machine-learning-cheatsheet.html).
+
+---
+
+# Resampling methods in scikit-learn  &lt;img src="img/Scikit_Learn_Logo.png" class="title-hex"&gt;
+
+We return to the Google Colab and set up 5-fold cross validation using the `scikit-learn` library.
+
+---
+
+class: inverse, center, middle
+name: tuning
+
+# Parameter tuning with scikit-learn
+
+&lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#FAFAFA' size=1px width=796px&gt;&lt;/html&gt;
+
+
+---
+
+# Tuning parameters 
+
+.pull-left[Finding the optimal level of flexibility highlights the bias-variance tradeoff.
+
+.hi-pink[Bias] : the error that comes from inaccurately estimating `\(\color{#3b3b9a}{f}\)`.
+
+.hi-pink[Variance] : the amount `\(\hat{\color{#3b3b9a}{f}}\)` would change with a different training sample.
+
+.font140[.KULbginline[Take-aways]] .font160[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#116E8A;" viewBox="0 0 576 512"&gt;&lt;path d="M576 240c0-23.63-12.95-44.04-32-55.12V32.01C544 23.26 537.02 0 512 0c-7.12 0-14.19 2.38-19.98 7.02l-85.03 68.03C364.28 109.19 310.66 128 256 128H64c-35.35 0-64 28.65-64 64v96c0 35.35 28.65 64 64 64h33.7c-1.39 10.48-2.18 21.14-2.18 32 0 39.77 9.26 77.35 25.56 110.94 5.19 10.69 16.52 17.06 28.4 17.06h74.28c26.05 0 41.69-29.84 25.9-50.56-16.4-21.52-26.15-48.36-26.15-77.44 0-11.11 1.62-21.79 4.41-32H256c54.66 0 108.28 18.81 150.98 52.95l85.03 68.03a32.023 32.023 0 0 0 19.98 7.02c24.92 0 32-22.78 32-32V295.13C563.05 284.04 576 263.63 576 240zm-96 141.42l-33.05-26.44C392.95 311.78 325.12 288 256 288v-96c69.12 0 136.95-23.78 190.95-66.98L480 98.58v282.84z"/&gt;&lt;/svg&gt;] : high variance models more prone to overfitting
+
+* use .hi-pink[resampling methods] to reduce this risk
+
+* hyperparameters (or *tuning parameters*) control complexity, 
+and thus the bias-variance trade-off
+
+* identify their optimal setting, e.g. with a *grid search*
+
+* no analytic expression for these hyperparameters.
+]
+
+.pull-right[
+
+.center[
+&lt;img src="img/bias-variance-model-fit.png" width="95%" style="display: block; margin: auto;" /&gt;
+]
+
+.footnote[Illustration and code from Boehmke &amp; Greenwell (2019, Chapter 2) on [Hands-on machine learning with R](https://koalaverse.github.io/homlr/).]
+
+]
+
+---
+
+# Tuning parameters via grid search
+
+.pull-left-alt[
+
+.center[
+&lt;img src="img/flow_chart_applied_predictive_modeling.jpg" width="85%" style="display: block; margin: auto;" /&gt;
+]
+]
+
+.pull-right-alt[
+
+.hi-pink[Model training &amp; validation phase]
+
+- define a set of candidate values (a *grid*)
+
+- assess model utility across the candidates (use clever *resampling*)
+
+- choose the optimal settings (optimize *loss*)
+
+- refit the model on entire training data with final tuning parameters
+
+- evaluate performance of the model on the test data (under &lt;svg style="height:0.8em;top:.04em;position:relative;fill:#116E8A;" viewBox="0 0 448 512"&gt;&lt;path d="M400 224h-24v-72C376 68.2 307.8 0 224 0S72 68.2 72 152v72H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-104 0H152v-72c0-39.7 32.3-72 72-72s72 32.3 72 72v72z"/&gt;&lt;/svg&gt;). 
+
+.hi-pink[Model selection] 
+
+- repeat the above steps for different models 
+
+- compare performance of these models that will generalize to new data (via test data, under &lt;svg style="height:0.8em;top:.04em;position:relative;fill:#116E8A;" viewBox="0 0 448 512"&gt;&lt;path d="M400 224h-24v-72C376 68.2 307.8 0 224 0S72 68.2 72 152v72H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-104 0H152v-72c0-39.7 32.3-72 72-72s72 32.3 72 72v72z"/&gt;&lt;/svg&gt;).
+
+.footnote[Flow chart from Kuhn &amp; Johnson (2013) on [Applied predictive modeling](http://appliedpredictivemodeling.com/).]
+]
+
+---
+
+# Putting it all together
+
+
+During the tuning process we inspect plots like the one on the right. 
+
+.font140[.KULbginline[Take-aways]] .font160[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#116E8A;" viewBox="0 0 576 512"&gt;&lt;path d="M576 240c0-23.63-12.95-44.04-32-55.12V32.01C544 23.26 537.02 0 512 0c-7.12 0-14.19 2.38-19.98 7.02l-85.03 68.03C364.28 109.19 310.66 128 256 128H64c-35.35 0-64 28.65-64 64v96c0 35.35 28.65 64 64 64h33.7c-1.39 10.48-2.18 21.14-2.18 32 0 39.77 9.26 77.35 25.56 110.94 5.19 10.69 16.52 17.06 28.4 17.06h74.28c26.05 0 41.69-29.84 25.9-50.56-16.4-21.52-26.15-48.36-26.15-77.44 0-11.11 1.62-21.79 4.41-32H256c54.66 0 108.28 18.81 150.98 52.95l85.03 68.03a32.023 32.023 0 0 0 19.98 7.02c24.92 0 32-22.78 32-32V295.13C563.05 284.04 576 263.63 576 240zm-96 141.42l-33.05-26.44C392.95 311.78 325.12 288 256 288v-96c69.12 0 136.95-23.78 190.95-66.98L480 98.58v282.84z"/&gt;&lt;/svg&gt;] &amp;nbsp; &amp;nbsp; *Less is more*: 
+
+- we prefer simple over more complex 
+
+- choose tuning parameters based on the numerically optimal value .KULbginline[OR]
+
+- choose a simpler model that is within a certain tolerance of the
+numerically best value 
+
+- use the .hi-pink['one-standard-error' rule].
+
+With the selected tuning parameters, we refit the model on the complete training set and use it to predict the test set (under &lt;svg style="height:0.8em;top:.04em;position:relative;fill:#116E8A;" viewBox="0 0 448 512"&gt;&lt;path d="M400 224h-24v-72C376 68.2 307.8 0 224 0S72 68.2 72 152v72H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-104 0H152v-72c0-39.7 32.3-72 72-72s72 32.3 72 72v72z"/&gt;&lt;/svg&gt;). 
+
+---
+
+# Tuning parameters with scikit-learn  &lt;img src="img/colab.png" class="title-hex"&gt;
+
+Let's return to our Colab.
+
+---
+
+class: inverse, center, middle
+name: engineering
+
+# Target and feature engineering: &lt;br&gt; data pre-processing steps
+
+
+&lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#FAFAFA' size=1px width=796px&gt;&lt;/html&gt;
+
+---
+
+# What is feature engineering?
+
+.pull-left-alt[
+
+.center[
+&lt;img src="img/feature_engineering_Kuhn.jpg" alt="Drawing" style="width: 165px;"/&gt;
+&lt;br&gt; &lt;br&gt; &lt;img src="img/boehmke_greenwell.jpg" alt="Drawing" style="width: 165px;"/&gt;  
+]
+
+]
+
+.pull-right-alt[
+Feature engineering:
+
+- applies .hi-pink[pre-processing steps] to predictor (features) variables
+
+- .hi-pink[creates new input features] from your existing ones (e.g. network features derived from a social network in a fraud detection model).
+
+Target engineering: 
+
+* transforms the response variable (or target) to improve the performance of a predictive model.
+
+The goal is to .KULbginline[make models more effective].
+
+See Kuhn &amp; Johnson (2019) on [Feature Engineering and Selection: A Practical Approach for Predictive Models](http://www.feat.engineering/) for a detailed discussion. 
+
+]
+
+---
+
+name: black-white-box
+class: clear
+
+.font140[.KULbginline[Take-aways]] .font160[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#116E8A;" viewBox="0 0 576 512"&gt;&lt;path d="M576 240c0-23.63-12.95-44.04-32-55.12V32.01C544 23.26 537.02 0 512 0c-7.12 0-14.19 2.38-19.98 7.02l-85.03 68.03C364.28 109.19 310.66 128 256 128H64c-35.35 0-64 28.65-64 64v96c0 35.35 28.65 64 64 64h33.7c-1.39 10.48-2.18 21.14-2.18 32 0 39.77 9.26 77.35 25.56 110.94 5.19 10.69 16.52 17.06 28.4 17.06h74.28c26.05 0 41.69-29.84 25.9-50.56-16.4-21.52-26.15-48.36-26.15-77.44 0-11.11 1.62-21.79 4.41-32H256c54.66 0 108.28 18.81 150.98 52.95l85.03 68.03a32.023 32.023 0 0 0 19.98 7.02c24.92 0 32-22.78 32-32V295.13C563.05 284.04 576 263.63 576 240zm-96 141.42l-33.05-26.44C392.95 311.78 325.12 288 256 288v-96c69.12 0 136.95-23.78 190.95-66.98L480 98.58v282.84z"/&gt;&lt;/svg&gt;] : *different models* have *different sensitivities* to the type of target and feature values in the model.
+
+.center[
+&lt;img src="img/Applied_Pred_overview_models.jpg" width="65%" style="display: block; margin: auto;" /&gt;
+] 
+
+Source: Kuhn &amp; Johnson (2013) on [Applied predictive modeling](http://appliedpredictivemodeling.com/).
+
+---
+
+# Feature engineering steps
+
+Examples of common pre-processing steps:
+
+* Some models (e.g. KNN, Lasso, neural networks) require that the predictor variables are on the same scale. 
+&lt;br&gt;
+.hi-pink[Centering (C)] and .hi-pink[scaling (S)] the predictors can be used for this purpose.
+
+* Other models are very sensitive to correlations between the predictors and filters or PCA signal extraction can improve the model.
+
+* Some models find .hi-pink[(near) zero-variance (NZV)] predictors problematic, and these should be removed before fitting the model. 
+
+* In other cases, the data should be .hi-pink[encoded] in a specific way to make sure all predictors are numeric (e.g. one-hot encoding of factor variables in neural networks). 
+
+* Many models cannot cope with .hi-pink[missing data] so .hi-pink[imputation strategies] might be necessary.
+
+* Development of new features that represent something important to the outcome. 
+
+* (add your own example here!)
+
+This list is inspired by Max Kuhn (2019) on [Applied Machine Learning](https://github.com/topepo/aml-london-2019). 
+
+---
+
+# A blueprint for feature engineering
+
+.font140[.KULbginline[Take-aways]] .font160[&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#116E8A;" viewBox="0 0 576 512"&gt;&lt;path d="M576 240c0-23.63-12.95-44.04-32-55.12V32.01C544 23.26 537.02 0 512 0c-7.12 0-14.19 2.38-19.98 7.02l-85.03 68.03C364.28 109.19 310.66 128 256 128H64c-35.35 0-64 28.65-64 64v96c0 35.35 28.65 64 64 64h33.7c-1.39 10.48-2.18 21.14-2.18 32 0 39.77 9.26 77.35 25.56 110.94 5.19 10.69 16.52 17.06 28.4 17.06h74.28c26.05 0 41.69-29.84 25.9-50.56-16.4-21.52-26.15-48.36-26.15-77.44 0-11.11 1.62-21.79 4.41-32H256c54.66 0 108.28 18.81 150.98 52.95l85.03 68.03a32.023 32.023 0 0 0 19.98 7.02c24.92 0 32-22.78 32-32V295.13C563.05 284.04 576 263.63 576 240zm-96 141.42l-33.05-26.44C392.95 311.78 325.12 288 256 288v-96c69.12 0 136.95-23.78 190.95-66.98L480 98.58v282.84z"/&gt;&lt;/svg&gt;] : *a proper implementation*
+
+.pull-left[
+
+* draft a .hi-pink[blueprint] of the necessary pre-processing steps, and their order 
+
+* [Boehme &amp; Greenwell (2019)](https://bradleyboehmke.github.io/HOML/engineering.html#proper-implementation) suggest
+
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 1. Filter out zero or near-zero variance features. &lt;br&gt;
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 2. Perform imputation if required. &lt;br&gt;
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 3. Normalize to resolve numeric feature skewness. &lt;br&gt;
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 4. Standardize (center and scale) numeric features. &lt;br&gt;
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 5. Perform dimension reduction (e.g., PCA) on &lt;br&gt; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; numeric features. &lt;br&gt;
+&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; 6. One-hot or dummy encode categorical features.
+
+]
+
+.pull-right[
+
+* avoid .hi-pink[data leakage] in the pre-processing steps when applied to resampled data sets! 
+
+.center[
+&lt;img src="img/data_leakage.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+]
+
+---
+
+# Pipelines  &lt;img src="img/Scikit_Learn_Logo.png" class="title-hex"&gt; 
+
+.pull-left[
+We'll use `pipeline` from the scikit-learn package to build a streamlined blueprint of pre-processing steps. 
+
+The main idea is to .hi-pink[preprocess multiple data sets] and to avoid data leakage using a single `pipeline` structure.
+
+Before we start, keep the following .KULbginline[fundamentals] of `pipeline` in mind!
+
+.center[
+&lt;img src="img/pipeline.png" width="75%" style="display: block; margin: auto;" /&gt;
+]
+
+]
+
+--
+
+.pull-right[
+
+Creating a `pipeline` takes the following steps:
+
+* build a pre-processing plan by setting up pipelines for distinct groups of variables
+
+* join all the pipelines into one by specifying the family's pipeline and their variables  
+
+* add the model to the pipeline, e.g. a linear regression model
+
+* save and load in the pipeline for future use.
+
+.footnote[Source: [Mahmoud Youssef's github](https://mahmoudyusof.github.io/general/scikit-learn-pipelines/)]
+
+]
+---
+
+name: wrap-up
+
+# Thanks!  &lt;img src="img/xaringan.png" class="title-hex"&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+Slides created with the R package [xaringan](https://github.com/yihui/xaringan).
+&lt;br&gt; &lt;br&gt; &lt;br&gt;
+Course material available via 
+&lt;br&gt;
+&lt;svg style="height:0.8em;top:.04em;position:relative;fill:#116E8A;" viewBox="0 0 496 512"&gt;&lt;path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/&gt;&lt;/svg&gt; https://github.com/katrienantonio/hands-on-machine-learning-Python-module-1
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightLanguage": "R",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"highlightSpans": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
