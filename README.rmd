@@ -52,9 +52,9 @@ The schedule will gradually be completed over the next days. The detailed schedu
 
 | Module | Session | Duration      | Description | Lecture material | Link to Colab | Link to notebook or script |
 |:-----:|:-------:|-----------|-------------|------|------|------|
-| Prework | | your own pace | check the Prework and Software Requirements instructions | | [Colab](https://colab.research.google.com/drive/13rQM_WVZJNfj-uRdRHsCX0MhUdH2FE-w) or [notebook](https://katrienantonio.github.io/hands-on-machine-learning-Python-module-1/notebooks/read_data_module_1.ipynb)| 
+| Prework | | your own pace | check the Prework and Software Requirements instructions | | [Colab](https://colab.research.google.com/drive/13rQM_WVZJNfj-uRdRHsCX0MhUdH2FE-w) | [notebook](https://katrienantonio.github.io/hands-on-machine-learning-Python-module-1/notebooks/read_data_module_1.ipynb)
 | Prework | | day before the workshop | check the course material on the GitHub repo and get ready | check Zoom link sent by AI | if possible, work with two screens: one for the Zoom session and one for coding | 
-| Module 1 | Session 1   | 9.30 - 9.40 | Statistical and machine learning | [sheets](https://katrienantonio.github.io/hands-on-machine-learning-Python-module-1/sheets/ML_part1_Python.html#knowing) | | |
+| Module 1 | Session 1   | 9.30 - 9.40 | Statistical and machine learning | [sheets](https://katrienantonio.github.io/hands-on-machine-learning-Python-module-1/sheets/ML_part1_Python.html#knowing) | [Colab](https://colab.research.google.com/drive/1DisoOYC5vZOWY7Tz1EHMg-qh4qTKpjkE?usp=sharing) | [notebook](https://katrienantonio.github.io/hands-on-machine-learning-Python-module-1/notebooks/Hands_on_ML_with_Python_with_YourTurns_Module_1.ipynb) |
 | |         | 9.40 - 9.50 | Model accuracy and loss functions | [sheets](https://katrienantonio.github.io/hands-on-machine-learning-Python-module-1/sheets/ML_part1_Python.html#accuracy) | | |
 | |        | 9.50 - 10.00 | Overfitting and bias-variance trade off | [sheets](https://katrienantonio.github.io/hands-on-machine-learning-Python-module-1/sheets/ML_part1_Python.html#overfit) | | |
 | |        | 10.00 - 10.30 | Data splitting and resampling methods | [sheets](https://katrienantonio.github.io/hands-on-machine-learning-Python-module-1/sheets/ML_part1_Python.html#resampling)| | |
@@ -65,7 +65,7 @@ The schedule will gradually be completed over the next days. The detailed schedu
 | | | 10.10 - 10.20 | Linear regression | | | |
 | | | 10.30 - 11.00 | GLMs | | | |
 | | | 11.00 - 11.20 | GAMs | | | |
-| | | 11.20 - 11.40 | GAMs | (continued) | |
+| | | 11.20 - 11.40 | GAMs | | | |
 | | | 11.40 - 12.30 | Regularized GLMs | | | |
 
 ##### Module 1: Machine learning foundations, regression methods
