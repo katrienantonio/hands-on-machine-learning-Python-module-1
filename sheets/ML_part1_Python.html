@@ -1159,6 +1159,529 @@ Creating a `pipeline` takes the following steps:
 ]
 ---
 
+class: inverse, center, middle
+name: regression
+
+# Linear regression models with sklearn and statsmodels
+
+&lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#FAFAFA' size=1px width=796px&gt;&lt;/html&gt;
+
+
+---
+
+# Fitting linear models  &lt;img src="img/Scikit_Learn_Logo.png" class="title-hex"&gt; 
+
+`scikit-Learn` and `statsmodels` are used in Python fitting linear models:
+
+`$$Y_i = \beta_0 + \beta_1x_{i1} + \ldots + \beta_p x_{ip} + \epsilon_i,$$`
+
+where the error terms `\(\epsilon_i\)` have mean zero and unit variance, and are typically assumed to be normally distributed.
+
+The typical Scikit-learn syntax is as follows:
+
+
+```r
+from sklearn.linear_model import LinearRegression
+
+reg1 = LinearRegression()
+reg1.fit(X_train.Gr_Liv_Area.values.reshape(-1,1), y_train)
+reg1.intercept_
+reg1.coef_
+```
+
+Here, the data set needs to be in right shape. We therefore apply `reshape` to transform the data set, see the Colab for more discussion.
+
+---
+
+# Fitting linear models &lt;img src="img/statsmodels.jpg" class="title-hex"&gt;
+
+''`statsmodels` provides classes and functions for many different statistical models. Moreover, it supports specifying models using R-style formulas and `pandas` DataFrames.'' (from the [documentation](https://www.statsmodels.org/stable/index.html))
+
+
+```r
+import statsmodels.api as sm
+import statsmodels.formula.api as smf
+
+lin_model = smf.ols('Sale_Price ~ Gr_Liv_Area', data = ames_python).fit()
+lin_model.summary()
+```
+
+Alternatively, you can also specify models using `numpy` arrays instead of formulas, with syntax of the following type:
+
+
+```r
+import statsmodels.api as sm
+
+lin_model = sm.ols(y, X).fit()
+lin_model.summary()
+```
+
+Working with the `statsmodels.api` makes the necessary functions and classes conveniently available, without making the `sm` namespace too crowded, see [here](https://www.statsmodels.org/stable/api.html).
+---
+
+# Fitting linear models  &lt;img src="img/colab.png" class="title-hex"&gt;
+
+Let's return to our Colab.
+
+---
+
+class: inverse, center, middle
+name: GLMs
+
+# Generalized Linear Models
+
+&lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#FAFAFA' size=1px width=796px&gt;&lt;/html&gt;
+
+---
+
+# Linear and Generalized Linear Models
+
+.pull-left-alt[
+
+.center[
+&lt;img src="img/esbjorn_GLM.jpg" alt="Drawing" style="width: 150px; height: 220px;"/&gt;
+&lt;br&gt; &lt;br&gt; &lt;img src="img/de_jong_GLM.jpg" alt="Drawing" style="width: 150px; height: 220px;"/&gt;  
+]
+
+]
+
+.pull-right-alt[
+
+With .hi-pink[linear regression models] `lm(.)`
+
+- model specification
+
+`$$\begin{eqnarray*}
+    \color{#FFA500}{Y} = \color{#e64173}{x}^{'}\color{#20B2AA}{\beta} + \epsilon.
+\end{eqnarray*}$$`
+
+- `\(\epsilon\)` is normally distributed with mean 0 and common variance `\(\sigma^2\)`, thus: `\(\color{#FFA500}{Y}\)` is normal with mean `\(\color{#e64173}{x}^{'}\color{#20B2AA}{\beta}\)` and variance `\(\sigma^2\)`
+
+With .hi-pink[generalized linear regression models] `glm(.)`
+
+- model specification
+
+`$$\begin{eqnarray*}
+    g(E[\color{#FFA500}{Y}]) = \color{#e64173}{x}^{'}\color{#20B2AA}{\beta}.
+\end{eqnarray*}$$`
+
+- `\(g(.)\)` is the link function
+
+- `\(\color{#FFA500}{Y}\)` follows a distribution from the exponential family.
+
+]
+
+
+---
+
+name: mtpl
+
+# Motor Third Party Liability data &lt;img src="img/Pandas.png" class="title-hex"&gt; &lt;img src="img/Seaborn.png" class="title-hex"&gt;
+
+We will use the Motor Third Party Liability data set. There are 163,231 policyholders in this data set. 
+
+The frequency of claiming (`nclaims`) and corresponding severity (`avg`, the amount paid on average per claim reported by a policyholder) are the .KULbginline[target variables] in this data set. 
+
+Predictor variables are: 
+
+* the exposure-to-risk, the duration of the insurance coverage (max. 1 year)
+* factor variables, e.g. gender, coverage, fuel
+* continuous, numeric variables, e.g. age of the policyholder, age of the car
+* spatial information: postal code (in Belgium) of the municipality where the policyholder resides.
+
+More details in [Henckaerts et al. (2018, Scandinavian Actuarial Journal)](https://katrienantonio.github.io/projects/2019/06/13/machine-learning/#data-driven) and [Henckaerts et al. (2020, North American Actuarial Journal)](https://katrienantonio.github.io/projects/2019/06/13/machine-learning/#tree-based-pricing).
+
+---
+
+# Generalized Linear Models (GLMs) 
+
+Modeling claim .hi-pink[frequency] and .hi-pink[severity] in the `mtpl` data set.
+
+.pull-left[
+
+Target variable `nclaims` (frequency)
+
+.center[
+&lt;img src="img/mtpl_freq.png" width="75%" style="display: block; margin: auto;" /&gt;
+]
+
+Suitable distributions: Poisson, Negative Binomial.
+
+]
+
+.pull-right[
+
+...  and `avg` (severity).
+
+.center[
+&lt;img src="img/mtpl_sev.png" width="75%" style="display: block; margin: auto;" /&gt;
+]
+
+Suitable distributions: log-normal, gamma.
+
+]
+
+
+---
+
+# A Poisson GLM
+
+
+```r
+import statsmodels.api as sm
+import statsmodels.formula.api as smf
+
+freq_glm_1 = smf.glm(formula= 'nclaims ~ sex', data = mtpl, exposure = mtpl.expo, family = sm.families.Poisson()).fit() 
+```
+
+  
+Fit a .KULbginline[Poisson GLM], with .KULbginline[logarithmic link] function.
+
+This implies: 
+
+`\(\color{#FFA500}{Y}\)` ~ Poisson, with
+
+`$$\begin{eqnarray*}
+    \log(E[\color{#FFA500}{Y}]) &amp;=&amp; \color{#e64173}{x}^{'}\color{#20B2AA}{\beta},
+\end{eqnarray*}$$`
+
+or, 
+
+`$$E[\color{#FFA500}{Y}] = \exp{(\color{#e64173}{x}^{'}\color{#20B2AA}{\beta})}.$$`
+
+Fit this model on `data = mtpl`. 
+  
+
+---
+  
+# A Poisson GLM (cont.)
+
+
+
+```r
+freq_glm_1 = smf.glm(formula='nclaims ~ sex', data = mtpl, exposure = mtpl.expo, family = sm.families.Poisson()).fit()
+```
+
+  
+Use `nclaims` as `\(\color{#FFA500}{Y}\)`. 
+
+Use `gender` as the only (factor) variable in the linear predictor.
+
+Include `expo` as an exposure term, c.q. `log(expo)` is an offset term in the linear predictor.
+
+Then, 
+
+`$$\begin{eqnarray*}
+\color{#e64173}{x}^{'}\color{#20B2AA}{\beta} = \log{(\texttt{expo})}+\beta_0 + \beta_1 \mathbb{I}(\texttt{male}). \end{eqnarray*}$$`
+
+Put otherwise, 
+
+`$$\begin{eqnarray*}
+E[\color{#FFA500}{Y}] = \texttt{expo} \cdot \exp{(\beta_0 + \beta_1 \mathbb{I}(\texttt{male}))} \end{eqnarray*},$$`
+where `\(\texttt{expo}\)` refers to `expo` the exposure variable.
+
+
+---
+
+# Fitting generalized linear models  &lt;img src="img/colab.png" class="title-hex"&gt;
+
+Let's return to our Colab.
+
+---
+
+class: inverse, center, middle
+name: GAMs
+
+# Generalized Additive Models 
+
+&lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#FAFAFA' size=1px width=796px&gt;&lt;/html&gt;
+
+
+---
+
+# Generalized Additive Models (GAMs)
+
+.pull-left-alt[
+
+.center[
+&lt;img src="img/GAM_Hastie_Tibshirani.jpg" alt="Drawing" style="width: 150px; height: 220px;"/&gt;
+&lt;br&gt; &lt;br&gt; &lt;img src="img/GAM_Wood.jpg" alt="Drawing" style="width: 150px; height: 220px;"/&gt;  
+]
+
+]
+
+.pull-right-alt[
+
+With .hi-pink[GLMs] `glm(.)`
+
+- transformation of the mean modelled with a linear predictor `$$\color{#e64173}{x}^{'}\color{#20B2AA}{\beta}$$`
+
+- not well suited for continuous risk factors that relate to the response in
+a non-linear way.
+
+With .hi-pink[Generalized Additive Models (GAMs)] 
+
+- the predictor allows for smooth effects of continuous risk factors and spatial covariates, next to the linear terms, e.g.
+
+`$$\color{#e64173}{x}^{'}\color{#20B2AA}{\beta}+\sum_j f_j(x_j) + f(\texttt{lat}, \texttt{long})$$`
+
+- predictor is still additive
+
+- preferred R package is {mgcv} by Simon Wood.
+
+
+]
+
+---
+
+# More on GAMs
+ 
+.pull-left[
+So, a GAM is a GLM where the linear predictor depends on .hi-pink[smooth functions] of covariates.
+
+Consider a GAM with the following predictor:
+
+`$$\color{#e64173}{x}^{'}\color{#20B2AA}{\beta}+f_j(x_j).$$`
+
+GAMs use .hi-pink[basis functions] to estimate the smooth effect `\(f_j(.)\)`
+
+`$$f_j(x_j) = \sum_{m=1}^M \beta_{jm} b_{jm}(x_j),$$`
+
+where the `\(b_{jm}(x)\)` are known basis functions and `\(\beta_{jm}\)` are coefficients that have to be estimated.
+]
+
+.pull-right[
+
+GAMs avoid overfitting by adding a .hi-pink[wiggliness penalty] to the likelihood
+
+`$$\int \left( f_j(x)'' \right)^2 = \beta_j^t \mathbf{S}_j\beta_j.$$`
+GAMs then balance goodness-of-fit and wiggliness via
+
+`$$\log \mathcal{L}(\beta,\beta_j) - \lambda_j \cdot \beta_j^t \mathbf{S}_j\beta_j,$$`
+
+with `\(\lambda_j\)` the .hi-pink[smoothing parameter].
+
+The smoothing parameter `\(\lambda_j\)` controls the trade-off between fit &amp; smoothness.
+]
+
+---
+
+class: clear
+
+Let's run some experiments to illustrate the effect of the smoothing parameter and the number of basis functions. We use the `mcycle` data from {MASS}.
+
+.center[
+&lt;img src="img/bs_and_k.png" width="85%" style="display: block; margin: auto;" /&gt;
+]
+
+In our opinion the functionalities currently available in `pyGAM` and `statsmodels` are not meeting the R standard of {mgcv} (yet).
+
+---
+
+# GAMs in insurance pricing analytics
+
+.center[
+&lt;img src="img/data_driven.png" width="85%" style="display: block; margin: auto;" /&gt;
+]
+
+[A data driven binning strategy for the construction of insurance tariff classes](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3052174) by Henckaerts, Antonio, Clijsters and Verbelen (2018, Scandinavian Actuarial Journal).
+
+---
+
+# Fitting generalized additive models  &lt;img src="img/colab.png" class="title-hex"&gt;
+
+Let's return to our Colab.
+
+---
+
+class: inverse, center, middle
+name: regularization
+
+# Regularized (G)LMs 
+
+&lt;html&gt;&lt;div style='float:left'&gt;&lt;/div&gt;&lt;hr color='#FAFAFA' size=1px width=796px&gt;&lt;/html&gt;
+
+
+---
+
+
+# Statistical learning with sparsity
+
+.pull-left-alt[
+
+.center[
+&lt;img src="img/sparsity_book.jpg" alt="Drawing" style="width: 150px; height: 220px;"/&gt;
+&lt;br&gt; &lt;br&gt; &lt;img src="img/boehmke_greenwell.jpg" alt="Drawing" style="width: 150px; height: 220px;"/&gt;  
+]
+
+]
+
+.pull-right-alt[
+
+Why?
+
+* Sort through the mass of information and bring it down to .hi-pink[its bare essentials].
+
+* One form of simplicity is .hi-pink[sparsity].
+
+* Only a relatively small number of predictors play a role.
+
+How? &amp;nbsp; &amp;nbsp; .KULbginline[Automatic feature selection!]
+
+* Fit a model with all *p* predictors, but constrain or .hi-pink[regularize] the coefficient estimates. 
+
+* Shrinking the coeffcient estimates can signifcantly reduce their variance. 
+
+* Some types of shrinkage put some of the coefficients .KULbginline[exactly equal to zero]!
+
+]
+
+---
+
+# Ridge and lasso (least squares) regression
+
+.pull-left[
+.KULbginline[Ridge] considers the least-squares optimization problem
+
+`$$\begin{eqnarray*}
+\min_{\beta_0,\boldsymbol{\beta}} \ \sum_{i=1}^n \left(y_i - \beta_0 - \sum_{j=1}^p \beta_j x_{ij}\right)^2 = \min_{\beta_0,\boldsymbol{\beta}} \ \text{RSS}
+\end{eqnarray*}$$`
+
+subject to a .hi-pink[budget constraint]
+
+`$$\begin{eqnarray*}
+\sum_{j=1}^p \beta_j^2 \leq \color{#e64173}{t},
+\end{eqnarray*}$$`
+
+i.e. an `\(\ell_2\)` penalty.
+
+Shrinks the coefficient estimates (not the intercept) to zero. 
+
+
+]
+
+.pull-right[
+.KULbginline[Lasso] considers the least-squares optimization problem
+
+`$$\begin{eqnarray*}
+\min_{\beta_0,\boldsymbol{\beta}} \ \sum_{i=1}^n \left(y_i - \beta_0 - \sum_{j=1}^p \beta_j x_{ij}\right)^2 = \min_{\beta_0,\boldsymbol{\beta}} \ \text{RSS}
+\end{eqnarray*}$$`
+
+subject to a .hi-pink[budget constraint]
+
+`$$\begin{eqnarray*}
+\sum_{j=1}^p |\beta_j| \leq \color{#e64173}{t},
+\end{eqnarray*}$$`
+
+i.e. an `\(\ell_1\)` penalty.
+
+Shrinks the coefficient estimates (not the intercept) to zero and does variable selection!
+
+Lasso is for .hi-pink[L]east .hi-pink[a]bsolute .hi-pink[s]hrinkage and .hi-pink[s]election .hi-pink[o]perator.
+
+
+]
+
+---
+
+# Ridge and lasso (least squares) regression (cont.)
+
+.pull-left[
+
+The .KULbginline[dual problem] formulation:
+
+* with ridge penalty: 
+
+`$$\begin{eqnarray*}
+\min_{\beta_0,\boldsymbol{\beta}} \ \text{RSS} + \color{#e64173}{\lambda} \sum_{j=1}^p \beta_j^2
+\end{eqnarray*}$$`
+
+* with lasso penalty:
+`$$\begin{eqnarray*}
+\min_{\beta_0,\boldsymbol{\beta}} \ \text{RSS}+\color{#e64173}{\lambda} \sum_{j=1}^p |\beta_j|.
+\end{eqnarray*}$$`
+
+`\(\color{#e64173}{\lambda}\)` is a tuning parameter; use resampling methods to pick a value!
+
+Both ridge and lasso require .hi-pink[centering and scaling] of the features. 
+
+]
+
+.pull-right[
+
+.center[
+&lt;img src="img/6.7_ISL.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+Ellipses (around least-squares solution) represent regions of constant RSS. 
+
+Lasso budget on the left and ridge budget on the right.
+
+Source: James et al. (2013) on [An introduction to statistical learning](http://faculty.marshall.usc.edu/gareth-james/ISL/).
+
+]
+
+---
+
+# Regularized GLMs 
+
+.pull-left[
+
+We now focus on generalizations of linear models and the lasso.
+
+Minimize
+
+`$$\begin{eqnarray*}
+\min_{\beta_0,\ \beta} -\frac{1}{n} \mathcal{L}(\beta_0,\ \beta;\ y,\ X)+\lambda \|\boldsymbol{\beta}\|_1.
+\end{eqnarray*}$$`
+
+Here: 
+
+* `\(\mathcal{L}\)` is the log-likelihood of a GLM.
+
+* `\(n\)` is the sample size
+
+* `\(\|\boldsymbol{\beta}\|_1 = \sum_{j=1}^p |\beta|_j\)` the `\(\ell_1\)` penalty.
+
+What happens if: 
+
+* `\(\lambda \to 0\)`?
+
+* `\(\lambda \to \infty\)`?
+
+]
+
+.pull-right[
+
+.center[
+&lt;img src="img/lasso_path.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+A more general penalty is the so-called **elastic net penalty**: 
+
+`$$\alpha \left( \lambda |\beta|_1 +\frac{1-\lambda}{2} |\beta|^2_2 \right)$$`.
+
+]
+---
+
+# Regularization in insurance pricing analytics
+
+.center[
+&lt;img src="img/smurf.png" width="85%" style="display: block; margin: auto;" /&gt;
+]
+
+[Sparse regression with Multi-type Regularized Feature Modeling](https://arxiv.org/abs/1810.03136) by Devriendt, Antonio, Reynkens and Verbelen (2021, Insurance: Mathematics and Economics).
+
+---
+
+
+# Fitting regularized LMs and GLMs  &lt;img src="img/colab.png" class="title-hex"&gt;
+
+Let's return to our Colab and fit regularized regression models with `scikit-learn` and `statsmodels`.
+
+
+---
+
 name: wrap-up
 
 # Thanks!  &lt;img src="img/xaringan.png" class="title-hex"&gt;

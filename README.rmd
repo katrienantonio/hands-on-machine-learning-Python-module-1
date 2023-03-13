@@ -61,12 +61,12 @@ The schedule will gradually be completed over the next days. The detailed schedu
 | |        | 10.40 - 10.50 | (cont.) | | | |
 | |        | 10.50 - 11.30 | Parameter tuning | [sheets](https://katrienantonio.github.io/hands-on-machine-learning-Python-module-1/sheets/ML_part1_Python.html#tuning) |  |  |
 | |        | 11.40 - 12.30  | Target and feature engineering | [sheets](https://katrienantonio.github.io/hands-on-machine-learning-Python-module-1/sheets/ML_part1_Python.html#engineering) | | |
-| Module 1 |  Session 2      | 09.30 - 10.10 | Target and feature engineering | | | |
-| | | 10.10 - 10.20 | Linear regression | | | |
-| | | 10.30 - 11.00 | GLMs | | | |
-| | | 11.00 - 11.20 | GAMs | | | |
-| | | 11.20 - 11.40 | GAMs | | | |
-| | | 11.40 - 12.30 | Regularized GLMs | | | |
+| Module 1 |  Session 2      | 09.30 - 10.10 | Target and feature engineering | [sheets](https://katrienantonio.github.io/hands-on-machine-learning-Python-module-1/sheets/ML_part1_Python.html#engineering) | | |
+| | | 10.10 - 10.30 | Linear regression | [sheets](https://katrienantonio.github.io/hands-on-machine-learning-Python-module-1/sheets/ML_part1_Python.html#regression)| | |
+| | | 10.40 - 11.10 | GLMs |[sheets](https://katrienantonio.github.io/hands-on-machine-learning-Python-module-1/sheets/ML_part1_Python.html#GLMs)| | |
+| | | 11.10 - 11.20 | GAMs | [sheets](https://katrienantonio.github.io/hands-on-machine-learning-Python-module-1/sheets/ML_part1_Python.html#GAMs)| | |
+| | | 11.30 - 11.40 | GAMs | | | |
+| | | 11.40 - 12.30 | Regularized (G)LMs |[sheets](https://katrienantonio.github.io/hands-on-machine-learning-Python-module-1/sheets/ML_part1_Python.html#regularization) | | |
 
 ##### Module 1: Machine learning foundations, regression methods
 
